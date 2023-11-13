@@ -10,6 +10,57 @@ No fancy stuff, no other extras.
 
 ## Instructions
 
+### Pre-built Docker container
+
+A pre-built docker container is available at `ghcr.io/qzed/dashboard:latest`.
+You can pull and run it via
+```
+docker container run --rm \
+    -p 80:3000/tcp \
+    --mount type=bind,source=$CONFIG_DIR,destination=/app/data \
+    localhost/dashboard:latest
+```
+Change the port mapping and mount options to your needs and replace `$CONFIG_DIR` with a path to the configuration directory containing the `apps.yaml` file.
+
+To test it, you can set `$CONFIG_DIR` to the [`data`](data) directory of this repository.
+This contains an example app configuration file ([`data/apps.yaml`](data/apps.yaml)), that you can copy and adapt to your setup.
+See [below](#configuration) for more details on how to configure the dashboard.
+
+<details>
+<summary>Example pod specification</summary>
+
+```yaml
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: dashboard
+  labels:
+    app: dashboard
+
+spec:
+  containers:
+  - name: dashboard
+    image: ghcr.io/qzed/dashboard:latest
+
+    ports:
+    - containerPort: 3000
+      hostPort: 80
+      protocol: tcp
+
+    volumeMounts:
+    - name: data
+      mountPath: /app/data
+
+  volumes:
+  - name: data
+    hostPath:
+      path: /srv/containers/dashboard/data
+      type: Directory
+```
+
+</details>
+
 ### Build and run via Docker
 
 Build the container with
