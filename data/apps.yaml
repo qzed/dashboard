@@ -1,0 +1,44 @@
+categories:
+  - name: "Home-Automation"
+    items:
+      - name: "Cockpit"
+        text: "homeassistant.local:9090"
+        url: "https://homeassistant.local:9090"
+        icon: "admin_panel_settings"
+
+      - name: "Homeassistant"
+        text: "homeassistant.local:8123"
+        url: "http://homeassistant.local:8123"
+        icon: "home"
+
+      - name: "Netdata"
+        text: "homeassistant.local:19999"
+        url: "http://homeassistant.local:19999"
+        icon: "analytics"
+
+  - name: "NAS"
+    items:
+      - name: "Cockpit"
+        text: "nas.local:9090"
+        url: "https://nas.local:9090"
+        icon: "admin_panel_settings"
+
+      - name: "Gitea"
+        text: "nas.local:9091"
+        url: "http://nas.local:9091"
+        icon: "code"
+
+      - name: "Syncthing"
+        text: "nas.local:9092"
+        url: "https://nas.local:9092"
+        icon: "smb_share"
+
+      - name: "ownCloud"
+        text: "nas.local:9093"
+        url: "https://nas.local:9093"
+        icon: "cloud"
+
+      - name: "Netdata"
+        text: "nas.local:19999"
+        url: "http://nas.local:19999"
+        icon: "analytics"
